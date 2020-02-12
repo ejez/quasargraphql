@@ -7,6 +7,12 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
+      // apollo graphql
+      // select boot file depending on quasar mode
+      // https://quasar.dev/quasar-cli/quasar-conf-js#The-basics
+      ctx.mode.ssr
+        ? 'apollo-ssr'
+        : 'apollo'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -74,6 +80,12 @@ module.exports = function (ctx) {
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
         })
+      },
+
+      env: {
+        // get graphql uri from env variable
+        // https://quasar.dev/quasar-cli/cli-documentation/handling-process-env#Adding-to-process.env
+        GRAPHQL_URI: JSON.stringify(process.env.GRAPHQL_URI)
       }
     },
 
