@@ -6,8 +6,6 @@ import params from 'src/params'
 // function that returns an 'apollo client' instance
 // https://www.apollographql.com/docs/react/api/apollo-client/
 export default function () {
-  console.log(process.env.GRAPHQL_URI)
-
   // https://www.apollographql.com/docs/link/links/http/#options
   const httpLinkOptions = {
     // you can define the 'uri' in 'src/params.js' or using an env variable when
